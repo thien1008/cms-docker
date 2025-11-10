@@ -1,0 +1,933 @@
+/*
+Theme Name: Twenty Twenty-Five
+Theme URI: https://wordpress.org/themes/twentytwentyfive/
+Author: the WordPress team
+Author URI: https://wordpress.org
+Description: Twenty Twenty-Five emphasizes simplicity and adaptability. It offers flexible design options, supported by a variety of patterns for different page types, such as services and landing pages, making it ideal for building personal blogs, professional portfolios, online magazines, or business websites. Its templates cater to various blog styles, from text-focused to image-heavy layouts. Additionally, it supports international typography and diverse color palettes, ensuring accessibility and customization for users worldwide.
+Requires at least: 6.7
+Tested up to: 6.8
+Requires PHP: 7.2
+Version: 1.3
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwentyfive
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+*/
+
+/*
+ * Link styles
+ * https://github.com/WordPress/gutenberg/issues/42319
+ */
+
+a {
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: .1em;
+}
+
+/* Focus styles */
+:where(.wp-site-blocks *:focus) {
+	outline-width: 2px;
+	outline-style: solid;
+}
+
+/* Increase the bottom margin on submenus, so that the outline is visible. */
+.wp-block-navigation .wp-block-navigation-submenu .wp-block-navigation-item:not(:last-child) {
+	margin-bottom: 3px;
+}
+
+/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
+.wp-block-navigation .wp-block-navigation-item .wp-block-navigation-item__content {
+	outline-offset: 4px;
+}
+
+/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
+.wp-block-navigation .wp-block-navigation-item ul.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	outline-offset: 0;
+}
+
+/*
+ * Progressive enhancement to reduce widows and orphans
+ * https://github.com/WordPress/gutenberg/issues/55190
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+caption,
+figcaption,
+p {
+	text-wrap: pretty;
+}
+
+/*
+ * Change the position of the more block on the front, by making it a block level element.
+ * https://github.com/WordPress/gutenberg/issues/65934
+*/
+.more-link {
+	display: block;
+}
+
+.card-date {
+	border: 2px solid rgb(82, 78, 78);
+	border-top: none;
+	border-left: none;
+}
+
+.wp-block-post-date {
+	color: blue;
+}
+
+.card-blog {
+	border: 1px solid #e0e0e0;
+	/* viền mỏng xám nhạt */
+	border-radius: 8px;
+	/* bo góc mềm mại */
+	box-shadow: 0 4px 12px rgba(46, 46, 46, 0.1);
+	/* đổ bóng nhẹ */
+	padding: 16px;
+	/* thêm khoảng cách bên trong */
+	background: #fff;
+	/* nền trắng để nổi hơn */
+	transition: all 0.3s ease;
+	/* hiệu ứng hover mượt */
+}
+
+.day {
+	font-weight: 600;
+	color: blue;
+}
+
+.month {
+	font-weight: 400;
+	color: rgb(103, 103, 120);
+}
+
+.wp-date {
+	border: 1px solid rgb(112, 86, 86);
+	border-top: none;
+	border-left: none;
+	margin-top: 10px !important;
+	padding-bottom: 35px !important;
+}
+
+.titile {
+	padding-top: 15px;
+	font-weight: 600;
+	color: rgb(147, 25, 25);
+	font-size: 20px;
+}
+
+.main-blog {
+	padding-left: 15px;
+}
+
+header {
+	background-color: #f8f8f8 !important;
+}
+
+.wp-site-blocks .wp-block-group main {
+	margin-top: 0px !important;
+}
+
+.wp-block-search__input {
+	border-radius: 10px;
+
+}
+
+.wp-block-search__inside-wrapper {
+	height: 35px;
+}
+
+/* Thay "Search results for:" thành "Search:" */
+.wp-block-search-results-title::before {
+	content: "Search: ";
+}
+
+.wp-block-search-results-title {
+	visibility: hidden;
+}
+
+.wp-block-search-results-title::before {
+	visibility: visible;
+	display: inline;
+}
+
+.wp-block-query-no-results p {
+	width: 54%;
+	text-align: center;
+}
+
+.wp-block-query-no-results {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.wp-block-search__button {
+	background: white !important;
+}
+
+.alignwide {
+	margin: 0 12px !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-home {
+	background-color: #e7e7e7;
+}
+
+.no-result {
+	padding-top: 0px !important;
+}
+
+.search-heading {
+	width: fit-content;
+	margin: 0 !important;
+	font-weight: 800;
+}
+
+.search-result-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.alignfull {
+	margin-top: 0 !important;
+}
+
+.search-resultm .wp-block-search__inside-wrapper {
+	width: 70% !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: none !important;
+}
+
+.search-resultm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 26px 0px;
+	background-color: #f5efe0 !important;
+}
+
+.search-resultm .wp-block-search__inside-wrapper .wp-block-search__button {
+	background: #28a745 !important;
+	border-radius: 0px !important;
+	position: absolute;
+	right: 19%;
+	padding: 16px !important;
+}
+
+.search-resultm .wp-block-search__inside-wrapper .wp-block-search__input {
+	border-radius: 0px !important;
+	height: 54px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M10,2A8,8,0,1,0,18,10a8,8,0,0,0-8-8Zm0,14a6,6,0,1,1,6-6A6,6,0,0,1,10,16Zm9.707,3.293-4.387-4.387a8.008,8.008,0,0,0,1.414-1.414l4.387,4.387a1,1,0,1,1-1.414,1.414Z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: 18px;
+	background-position: 5px center;
+	;
+}
+
+
+
+
+.nav-home li {
+	height: 130px;
+	text-align: center;
+	width: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.alignwide {
+	padding: 0 !important;
+}
+
+.nav-search .wp-block-navigation-item .wp-block-navigation-item__content .wp-block-navigation-item__label {
+	font-size: 13px !important;
+
+}
+
+.has-large-font-size {
+	font-weight: 800;
+}
+
+footer {
+	background: #007b5e;
+}
+
+footer .wp-block-group .is-nowrap ul {
+	list-style: none;
+	flex: 1;
+	color: white;
+	min-height: 0;
+	line-height: 1.6;
+	align-items: unset !important;
+}
+
+footer .wp-block-group .is-nowrap ul li a {
+	text-decoration: none;
+
+}
+
+footer .wp-block-group .is-nowrap ul li::before {
+	content: "» ";
+	font-family: "Font Awesome 5 Free";
+	/* Đảm bảo Font Awesome được tải */
+	font-weight: 510;
+	/* Cân nặng cho biểu tượng solid */
+	margin-right: 5px;
+
+}
+
+footer .wp-block-group .is-nowrap ul::before {
+	content: "Quick links";
+	display: block;
+	font-weight: bold;
+	margin-bottom: 25px;
+	margin-left: 5px;
+	border-left: 3px solid #fff;
+	padding-left: 10px;
+	font-size: 18px;
+}
+
+footer .wp-block-group .is-nowrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: unset !important;
+}
+
+footer .wp-block-group .is-nowrap ul li {
+	transition: .5s all ease;
+	color: white !important;
+	font-size: 15px !important;
+}
+
+footer .wp-block-group .is-nowrap ul li:hover {
+
+	color: #28a745;
+	margin-left: 15px;
+	font-weight: 700;
+}
+
+footer p {
+	color: white;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 0px 10%;
+	text-align: center;
+}
+
+footer .wp-block-social-links li a {
+	color: white!important;
+	font-size: 35px;
+}
+
+footer .wp-block-social-links li {
+	background-color: #007b5e !important;
+}
+
+footer .author{
+	margin-bottom: 0px!important;
+}
+.divider {
+	position: relative;
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	/* Đường kẻ */
+	margin: 40px 0;
+}
+
+.divider::after {
+	content: '';
+	position: absolute;
+	left: 20%;
+	transform: translateX(-20%) rotate(45deg);
+	/* Xoay 45 độ */
+	top: -5px;
+	/* canh cho 2 đỉnh ngang với đường kẻ */
+
+	width: 10px;
+	height: 10px;
+
+	background-color: #ffffff;
+	/* Màu nền bên trong */
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.circle-yellow {
+	background-color: #f5ce31;
+	border-radius: 50%;
+	width: 96px;
+	height: 80px;
+	margin-left: 67px !important;
+	padding-right: 10px !important;
+	position: relative;
+	right: 0;
+}
+
+main div .circle-yellow {
+	transform: translateX(-17px);
+}
+
+.title-y::after {
+	content: '';
+	border: #050505 1px solid;
+	width: 100%;
+	transform: translateY(10px);
+}
+
+.circle-yellow .wp-block-group div {
+	color: rgb(16, 15, 15) !important;
+	font-weight: 800;
+	font-size: 12px;
+	line-height: 0.4;
+}
+
+.circle-yellow .wp-block-post-date {
+	color: rgb(16, 15, 15) !important;
+	font-weight: 800;
+	font-size: 12px;
+	margin-left: -12px !important;
+	transform: translateX(17px);
+}
+
+.circle-yellow .wp-block-group .title-y {
+	display: flex;
+	flex-direction: column;
+	/* Xếp dọc */
+	align-items: center;
+}
+
+.circle-yellow .wp-block-group {
+	margin-left: -12px !important;
+}
+
+.pn_post .wp-block-group .circle-yellow {
+	background: none !important;
+}
+
+.post-navigation-link-next a {
+	text-decoration: none !important;
+}
+
+.post-navigation-link-previous a {
+	text-decoration: none !important;
+}
+
+.wp-block-post-content p {
+	color: #cbcbd0;
+}
+
+#reply-title {
+	display: none;
+}
+
+#commentform .logged-in-as {
+	display: none;
+}
+
+.comment-form-comment label {
+	display: none;
+
+}
+
+.comment-form-comment {
+	margin: 20px 20px 12px 20px !important;
+}
+
+body.logged-in #submit {
+	background-color: #007bff !important;
+}
+
+#commentform {
+	border: 1px solid #b1b9c1;
+	border-radius: 4px;
+
+}
+
+.form-submit {
+	position: relative;
+}
+
+/* Giữ nguyên input thật — cho nó trong suốt nhưng vẫn bấm được */
+.form-submit input[type="submit"] {
+	opacity: 0;
+	/* ẩn đi */
+	position: relative;
+	z-index: 2;
+	right: 10px;
+	/* nằm trên before để nhận click */
+	cursor: pointer;
+}
+
+#submit {
+	position: relative;
+	right: -479px;
+}
+
+/* Tạo nút giả bằng ::before phía sau input */
+.form-submit::before {
+	content: "Share";
+	position: absolute;
+	right: 20px;
+
+	background-color: #0073aa;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 4px;
+	font-family: inherit;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1.2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+	pointer-events: none;
+	/* tránh chặn click vào input thật */
+}
+
+
+#commentform {
+	position: relative;
+	border: 1px solid #dcdcdc;
+	border-radius: 8px;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+/* Thêm "Make a Post" giả lập */
+#commentform::before {
+	content: "";
+	display: block;
+	background-color: #f6f6f6;
+	border-bottom: 1px solid #ddd;
+	padding: 8px 12px;
+	font-weight: 500;
+	color: #555;
+	height: 40px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+#commentform::after {
+	content: "Make a Post";
+	padding: 12px;
+	background-color: white;
+	position: absolute;
+	top: 14px;
+	left: 28px;
+	border-radius: 8px;
+}
+
+textarea#comment {
+	position: relative;
+}
+
+
+textarea#comment:not(:focus)::before {
+	content: "What are you thinking...";
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	color: #888;
+	font-style: italic;
+	pointer-events: none;
+}
+
+.comment-form-comment::before {
+	content: "What are you thinking...";
+	position: absolute;
+	top: 91px;
+	left: 35px;
+	z-index: 6;
+	color: #888;
+	font-style: italic;
+	pointer-events: none;
+}
+
+.categories .has-x-large-font-size {
+	font-weight: 800;
+	padding-left: 37px;
+}
+
+.categories .wp-block-categories-list li::marker {
+	color: #f5ce31;
+	margin-right: 15px;
+}
+
+.categories {
+	background-color: #f7f7f7;
+	padding-bottom: 30px;
+}
+
+.categories .wp-block-categories-list {
+	line-height: 2.5;
+	background-color: white;
+	padding-left: 42px;
+	padding-right: 103px;
+	margin-bottom: 20px;
+	border-top: 25px solid transparent;
+	border-image: repeating-linear-gradient(135deg, #f5f5f5, #f5f5f5 1px, #eaeaea 1px, #eaeaea 2px) 10;
+	margin-left: 35px !important;
+	margin-right: 35px !important;
+}
+
+
+.categories .wp-block-categories-list li a {
+	text-decoration: none;
+	color: #8bb9df;
+	font-weight: 600;
+	transition: .5s all ease;
+}
+
+.categories .wp-block-categories-list li {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.lastest_post li .wp-block-group .circle-yellow {
+	background: none !important;
+
+}
+
+.lastest_post li .wp-block-group .circle-yellow .wp-block-group div {
+	color: white !important;
+}
+
+.lastest_post li .wp-block-group .circle-yellow .wp-block-post-date time a {
+	color: white !important;
+}
+
+.lastest_post_main {
+	background: #56bdbf;
+	color: white !important;
+}
+
+.lastest_post li .wp-block-group .circle-yellow .wp-block-group .title-y::after {
+	border: #ffffff 1px solid !important;
+}
+
+.lastest_post_main .lastest_post .wp-block-post .wp-block-post-title {
+	width: 223px;
+}
+
+.all_latest_post {
+	background-color: #62c6c8;
+	padding: 20px;
+	color: white;
+
+}
+
+.all_latest_post a {
+	text-decoration: none;
+}
+
+.post_new {
+
+	width: 30%;
+
+}
+
+.post_new .wp-block-latest-posts__list {
+	counter-reset: post-counter;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	/* 2 cột */
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+
+/* 🔹 Đường kẻ dọc ở giữa */
+.post_new .wp-block-latest-posts__list::before {
+	content: "";
+	position: absolute;
+	top: 5%;
+	bottom: 0;
+	left: 50%;
+	width: 1.5px;
+	height: 90%;
+	background: #e6e6e6;
+}
+
+/* 🔹 Mỗi ô */
+.post_new .wp-block-latest-posts__list li {
+	counter-increment: post-counter;
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+	padding: 0.75rem 1rem;
+	border-bottom: 1.5px solid #e6e6e6;
+}
+
+/* 🔹 Số thứ tự */
+.post_new .wp-block-latest-posts__list li::before {
+	content: counter(post-counter);
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: #000;
+	line-height: 1;
+	width: fit-content;
+}
+
+/* 🔹 Tiêu đề */
+.post_new .wp-block-latest-posts__post-title {
+	text-decoration: none;
+	font-size: 1rem;
+	color: #111;
+	font-weight: 500;
+}
+
+.post_new .wp-block-latest-posts__post-title:hover {
+	color: #0073aa;
+	text-decoration: underline;
+}
+
+/* 🔹 Bỏ border dưới cho hàng cuối */
+.post_new .wp-block-latest-posts__list li:nth-last-child(-n+2) {
+	border-bottom: none;
+}
+
+.title_postnew {
+	font-weight: 800;
+	border-bottom: 2px solid #cfb2b8;
+	margin: 0 0 0 0 !important;
+	padding-bottom: 10px;
+	width: fit-content;
+}
+
+.comment {
+	width: 30%;
+
+}
+
+.comment .wp-block-latest-comments .wp-block-latest-comments__comment article footer {
+	display: none;
+}
+
+.comment .wp-block-latest-comments .wp-block-latest-comments__comment img {
+	display: none;
+}
+
+.comment .wp-block-latest-comments .wp-block-latest-comments__comment article .wp-block-latest-comments__comment-excerpt p {
+	color: #7f9bc9;
+	font-weight: 600;
+}
+
+.comment .wp-block-latest-comments .wp-block-latest-comments__comment {
+	margin-bottom: 0px;
+	min-height: 1.25rem;
+	padding-bottom: 1px;
+	border-bottom: 1.5px solid #e6e6e6;
+}
+
+.comment .wp-block-latest-comments {
+	line-height: 1;
+}
+
+.comment .wp-block-latest-comments .wp-block-latest-comments__comment article .wp-block-latest-comments__comment-excerpt {
+	margin-left: 0px !important;
+}
+
+.title_comment {
+	font-weight: 800;
+	border-bottom: 2px solid #cfb2b8;
+	margin: 0 0 0 40px !important;
+	padding-bottom: 10px;
+	width: fit-content;
+
+}
+
+#modal-3-content .nav-search {
+	line-height: 3.5;
+	margin-top: 28px;
+}
+
+.nav_avatar {
+	margin-bottom: 11px !important;
+
+}
+
+.page_11 .wp-block-query .wp-block-post-template {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.page_11 .wp-block-query .wp-block-post-template li {
+	margin-top: 0;
+}
+
+.page_11 .wp-block-query .wp-block-post-template li .alignwide {
+	align-items: unset !important;
+}
+
+.page_11 .wp-block-query .wp-block-post-template li .alignwide .wp-block-post-title {
+	position: relative;
+	line-height: 1.8;
+}
+
+.page_11 .wp-block-query .wp-block-post-template li .alignwide .wp-block-post-title::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 40px;
+	height: 2px;
+	background-color: #555;
+}
+
+.page_11 .wp-block-query .wp-block-post-template li .alignwide .wp-block-post-excerpt {
+	max-width: 150px;
+
+}
+
+.page_11 .has-large-font-size {
+	position: relative;
+	line-height: 2.4;
+	color: blue;
+	margin-left: 0px !important;
+}
+
+.page_11 p::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #776e6e;
+}
+
+
+.comment-box {
+	margin-top: 30px;
+	font-family: "Times New Roman", serif;
+}
+
+.comment-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	border-bottom: 2px solid #aaa;
+	padding-bottom: 5px;
+}
+
+.comment-box .media {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 15px;
+}
+
+.comment-box .media-left {
+	margin-right: 10px;
+	width: 60px;
+}
+
+.comment-box .media-left img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.comment-box .media-body {
+	flex: 1;
+}
+
+.comment-box .media-heading {
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	padding: 7px 10px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.comment-box .media-heading:before {
+	content: "";
+	width: 12px;
+	height: 12px;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	border-width: 1px 0 0 1px;
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 10px;
+	left: -6px;
+}
+
+.comment-box p {
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-bottom: 5px;
+}
+
+.comment-replies {
+	margin-left: 40px;
+	/* đẩy comment con sang phải */
+	border-left: 2px solid #ddd;
+	padding-left: 10px;
+}
+
+.wp-site-blocks .wp-block-group .page_11 {
+	width: 20% !important;
+}
+
+.wp-site-blocks .wp-block-group main {
+	width: 60% !important;
+}
+
+.wp-site-blocks .wp-block-group .search_comment {
+	width: 20% !important;
+}
+
+
+.recentpost .pn_post .wp-block-group .wp-block-post-navigation-link {
+	margin-left: 69px;
+}
+
+.perfect-comment{
+	display: flex;
+	margin: 20px 12px;
+}
+.perfect-bubble{
+	margin-left: 12px;
+	line-height: 1.3;
+	border: 1px solid #eadbdb;
+}
+.perfect-author{
+	background-color: #f5f5f5;
+	padding: 5px;
+	font-size: 18px;
+	position: relative;
+}
+/* Mũi tên tam giác */
+    .perfect-author::after {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 14px;
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-right: 10px solid #f5f5f5;
+        filter: drop-shadow(-1px 0 1px #e0d1d1);
+        
+    }
+.perfect-text{
+	font-size: 12px;
+	padding: 2px;
+}
+wp-block-post-title
